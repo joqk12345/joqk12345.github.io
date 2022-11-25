@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "pytorch 必须知道的"
+title:        "pytorch 最少必要知识"
 author:       "galaxies"
 header-style:  text
 catalog:      true
@@ -11,12 +11,12 @@ tags:
 ## pytorch知多少
 
 ### 整体架构
-![](/img/in-post/post-bg-torch-achitect.png)
+![](/img/in-post/post-ai-framework/pytorch/torch-achitect.png)
 
 ### 设计理念
 
 ### 后端架构
-![](/img/in-post/post-bg-pytorch-backend.png)
+![](/img/in-post/post-ai-framework/pytorch/pytorch-backend.png)
 
 ### 核心模块
 1. core 
