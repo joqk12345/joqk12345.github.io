@@ -92,6 +92,7 @@ page-mathjax: false
 friends:
   [  
     { title: "老庄", href: "https://zhuangbiaowei.github.io/" },
+    { title: "soulhacker", href: "http://soulhacker.me/" },
     { title: "乱序（Midare）", href: "http://mida.re/" },
     { title: "Ebn Zhang", href: "https://ebnbin.dev/" },
     { title: "Kun Qian", href: "http://kunq.me" },
