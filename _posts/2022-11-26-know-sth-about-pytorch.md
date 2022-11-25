@@ -10,7 +10,13 @@ tags:
 ---
 ## pytorch知多少
 
+### 整体架构
+![](/img/in-post/post-bg-torch-achitect.png)
+
 ### 设计理念
+
+### 后端架构
+![](/img/in-post/post-bg-pytorch-backend.png)
 
 ### 核心模块
 1. core 
