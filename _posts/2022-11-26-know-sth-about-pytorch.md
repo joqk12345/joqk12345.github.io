@@ -1,3 +1,13 @@
+---
+layout:       post
+title:        "pytorch 必须知道的"
+author:       "galaxies"
+header-style:  text
+catalog:      true
+tags:
+    - pytorch
+    - AI
+---
 ## pytorch知多少
 
 ### 设计理念
