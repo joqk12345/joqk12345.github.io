@@ -16,7 +16,7 @@ RSS: false
 weibo_username: joqk12345
 zhihu_username: 
 github_username: joqk12345
-twitter_username: Galaxes
+twitter_username: Galaxie48729460
 #facebook_username:  
 #linkedin_username:  
 
@@ -90,7 +90,8 @@ page-mathjax: false
 
 # Friends
 friends:
-  [
+  [  
+    { title: "老庄", href: "https://zhuangbiaowei.github.io/" },
     { title: "乱序（Midare）", href: "http://mida.re/" },
     { title: "Ebn Zhang", href: "https://ebnbin.dev/" },
     { title: "Kun Qian", href: "http://kunq.me" },
