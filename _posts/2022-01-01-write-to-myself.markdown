@@ -1,9 +1,16 @@
+
+---
+layout:       post
+title:        "2022年初反思"
+author:       "galaxies"
+header-style:  text
+catalog:      true
+tags:
+    - rethink
+---
 2022年了，就这样悄无声息的到来了。
 
-
-
 发现自己工作也将近十年了，在十年前在深圳实习的自己无法想象到十年之后自己的样子的变化。
-
 
 
 我想问问十年前的自己看到现在十年后的模样会喜欢他吗又或者是鄙视他。
