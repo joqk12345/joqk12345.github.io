@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "The most efficient subtitle solution."
+title:        "The most efficient subtitle solution"
 author:       "galaxies"
 header-style:  text
 catalog:      true
