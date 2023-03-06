@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "The most efficient subtitle solution."
+title:        "The most efficient subtitle solution"
 author:       "galaxies"
 header-style:  text
 catalog:      true
@@ -66,3 +66,54 @@ https://github.com/iina/iina/issues/972 代开发者修复
 2. 用于测试的mp4的资源
     https://gist.github.com/jsturgis/3b19447b304616f18657
 
+3. 给mp3加ID3头的代码
+
+```
+from mutagen import File
+from mutagen.mp3 import MP3
+from mutagen.id3 import ID3, APIC, TIT2, TPE1, TALB
+def set_mp3_info(path,info):
+
+
+    songFile = MP3(path)
+    if songFile.tags is None:
+        songFile.add_tags()
+    # // 插入封面
+    songFile['APIC'] = APIC(
+        encoding=3,
+        mine='image/jpeg',
+        desc=u'Cover',
+        data=info['picData']
+    )
+    # 插入歌名
+    songFile['TIT2'] = TIT2(
+        encodings = 3,
+        text =info['title']
+    )
+    #  插入第一演奏家、歌手、等
+    songFile['TPE1'] = TPE1(
+        encodings = 3,
+        text = info['artist']
+    )
+    #  插入专辑名
+    songFile['TALB'] = TALB(
+        encodings =3,
+        text = info['album']
+    )
+    songFile.save()
+
+if __name__ == '__main__':
+    MP3_file = "~/pie/pie-ep46.mp3"
+    # 读取封面图片
+    with open('~/pie/cover/cover.png', 'rb') as f:
+        picData = f.read()
+
+    info = {
+        'picData':picData,
+        'title':'后互联时代的乱弹',
+        'artist':'李俊、庄表伟、王伟',
+        'album':'pie'
+    }
+
+    set_mp3_info(MP3_file,info)
+```
