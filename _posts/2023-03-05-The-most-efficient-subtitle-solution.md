@@ -49,6 +49,20 @@ brew install iina
 2. 配置纯音频与字幕后发现不显示字幕，进而发现bug
 https://github.com/iina/iina/issues/972 代开发者修复
 
+3. 自己通过给mp3加id3头信息并配上封面之后就可以了
+
+4. 另一种方案可以采用FFmpeg将mp3转mp4 也是可以播放字幕的
+
+5. audio配置字幕的效果
+![](/img/in-post/post-ai/auto-transcriber/audio_with_srt.png)
+
+6. video配字幕的效果
+![](/img/in-post/post-ai/auto-transcriber/video_with_srt.png)
 
 
+## FAQ
+1. 遇到的问题一直加载不了字幕的问题
+    其实遇到的最大的问题就是IINA工具的问题，一定要确保从官网上下载，不要使用brew install 因为这个不一定是最新版的，重新安装之后加载字幕就正常了
+2. 用于测试的mp4的资源
+    https://gist.github.com/jsturgis/3b19447b304616f18657
 
