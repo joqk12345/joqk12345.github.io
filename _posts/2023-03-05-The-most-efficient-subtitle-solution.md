@@ -30,7 +30,7 @@ tags:
 3. pip install gradio
 4. Open application: python gui.py or use the command line:
 ```
-python3 ./cli.py ../../test_data/cn/pie/pie-ep46.mp3  --output "../../test_data/cn/pie/pie-ep46.srt" --task transcribe --model large
+python3 ./cli.py ../../test_data/cn/pie/pie-ep46.mp3  --output "../../test_data/cn/pie/pie-ep46.srt" --task transcribe --model large --device cuda:1
 ```
 5. 执行展示效果
 
