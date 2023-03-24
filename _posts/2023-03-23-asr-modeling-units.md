@@ -17,7 +17,7 @@ asr 常见模型目前已大类端到端和CTC两类为主介绍一下建模单�
 
 ## End-to-End 方案
 
-
+建模单元本身直接出结果，会做一写后处理让subword 变成word
 
 ## CTC-WFST 方案
 
