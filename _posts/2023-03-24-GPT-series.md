@@ -7,7 +7,8 @@ catalog:      true
 tags:
     - gpt
     - gpt2
-    - gpt3-In-Context Learning
+    - gpt3
+    - In-Context Learning
     - Instruct-GPT
 ---
 
@@ -22,21 +23,22 @@ GPT3: multi-task learners
 ## Instruct-GPT
 
 * data-set 
-<img src="../img/in-post/post-ai/model/data-set.png">  
+![](/img/in-post/post-ai/model/data-set.png)
 1. 准备3份数据集
    1. SFT Data
    2. RM Data
    3. PPO Data
 
 * 模型训练步骤
-<img src="../img/in-post/post-ai/model/Instruct-architecture.png">
+![](/img/in-post/post-ai/model/Instruct-architecture.png)
 1. 三步骤
    1. :  supervised fine-tuning (SFT), 
    2. reward model (RM) training
    3. reinforcement learning via proximal policy optimization (PPO) on this reward model.
 
 * 关于PPO的损失函数的介绍
-<img src="../img/in-post/post-ai/model/ppo.png">
+
+![](/img/in-post/post-ai/model/ppo.png)
 
 这里用的是强化学习，因为他的数据分布是随着策略的更新，环境会发生变化的。优化算法是PPO，Proximal Policy Optimization，近端策略优化。简单来说，就是对目标函数objective(φ)通过随机梯度下降进行优化。
 目标函数理解：
