@@ -14,6 +14,9 @@ tags:
 ---
 
 # DL Life cycle
+AI目前的发展阶段已经经历了Arificial Intelligence、Machine Learning、Deep Learning、Foundation Models，这个时代，如今在事实上已经迈入大模型时代，确实发展比较快，仅此为了整理AI 相关的不变的理论范式、概念。
+
+![](/img/in-post/post-ai/inference/AI_Develop_Stage.png)
 
 * 训练：训练过程通过设计合适AI模型结构以及损失函数和优化算法，将数据集以mini-batch 反复进行前向计算并计算损失 ，反向计算梯度利用优化函数来更新模型，使得损失函数最小。训练过程最重要是梯度计算和反向传播。
 
@@ -84,7 +87,37 @@ DL inference 指的是深度学习模型的推理阶段，即在模型训练完�
 
 ![](/img/in-post/post-ai/inference/inference-brain-mind.png)
 
+## model inference 
 
+## llm inference
+
+llm 时代给给AI计算模式带来新的思考
+1. 芯片间互连技术，提供 X00GB/s 带宽
+由于模型大，目前30B Llama 模型大概占用显存32G，已经超过传统的V100 架构的显存，模型并行以及数据高速互联技术的需求会越来越多。
+2. 专用高速 Transformer 引擎
+   * 大模型以 Transformer为基础结构进行堆叠，高速的 T ransformer计算
+   * 更低比特 Transformer模块，并支持MoE构建万亿大模型
+
+### 业内目前常用的推理系统
+
+1. transformers-bloom-inference
+hugging face 出品，支持不同的backend.
+Accelerate/Deepspeed-Inference/Deepspeed-ZeRO.
+
+2. deepspeed Inference
+
+3. Energon-AI
+   
+hpcaitech： HPC-AI Tech。 We are a global team to help you train and deploy your AI models。
+
+####  解码策略
+
+Accelerate/Deepspeed-Inference/Deepspeed-ZeRO.
+
+#### 加载不同的模型size 与模型量化
+1. 模型size
+2. 模型量化：fp16、int8、int4
+3. 模型加速： onnx、tensorRT
 
 
 
@@ -92,6 +125,10 @@ DL inference 指的是深度学习模型的推理阶段，即在模型训练完�
 
 1.  > [ DeepLearningSystem]
    (https://github.com/chenzomi12/DeepLearningSystem) 
+2.  > [ transformers-bloom-inference ]
+   (https://github.com/huggingface/transformers-bloom-inference) 
+
+   
 
 
 
