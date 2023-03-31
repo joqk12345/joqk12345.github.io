@@ -53,8 +53,8 @@ tags:
 
 ## 参考文件
 
-1.  > [ GPT-3 + RL 全流程训练开源整理]
-   (https://zhuanlan.zhihu.com/p/608705255) 
+1.  > [ ]
+   () 
 
 
    
