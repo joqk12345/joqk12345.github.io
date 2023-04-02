@@ -44,4 +44,11 @@ deepspeed是从零开始训练的第一步，是大模型训练的启动步骤�
 4.  > [ DeepSpeed]
    (https://www.deepspeed.ai/training/) 
 
+5. > [ZeRO: Memory Optimizations Toward Training Trillion
+Parameter Models]
+   (https://arxiv.org/pdf/1910.02054.pdf)
+
+6. > [Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism]
+   (https://arxiv.org/pdf/1909.08053.pdf)
+
 
