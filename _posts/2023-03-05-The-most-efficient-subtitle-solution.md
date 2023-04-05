@@ -67,6 +67,7 @@ https://github.com/iina/iina/issues/972 代开发者修复
     https://gist.github.com/jsturgis/3b19447b304616f18657
 
 3. 给mp3加ID3头的代码
+4. 后来试了其他的播放器之后，发现在Mac上，有这个VLC媒体播放器：这是一个功能强大的开源媒体播放器，可以播放几乎所有类型的媒体文件，并支持加载外部字幕文件。在打开视频文件后，您可以通过在VLC菜单中选择“字幕”->“打开字幕文件”来加载外部字幕文件，试了一下是不错的。
 
 ```
 from mutagen import File
