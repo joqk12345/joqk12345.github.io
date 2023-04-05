@@ -56,7 +56,9 @@ tags:
 
 ![](/img/in-post/post-ai/training/all-gather.png)
 
+## 通讯系统
 
+分布式并行训练集群中通信的具体实现分为机器内通信和机器间通信，里面硬件会通过PCIE、NVLINK、RDMA等具体硬件协议实现，软件上通过NCCL、MPI库来实现。
 
 
 
