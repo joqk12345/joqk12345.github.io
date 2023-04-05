@@ -50,4 +50,8 @@ tags:
    (https://github.com/dalinvip/Awesome-ChatGPT)
 4. > [紧跟GPT风向]
    (https://szqxz4m7fs.feishu.cn/docx/UhuedqlJVo7rl9xOKfuchSQqn4g)
+5. > [Why Can GPT Learn In-Context]
+    (https://arxiv.org/abs/2212.10559)
+6. > [UL2: Unifying Language Learning Paradigms]
+    (https://arxiv.org/pdf/2205.05131.pdf)
 
