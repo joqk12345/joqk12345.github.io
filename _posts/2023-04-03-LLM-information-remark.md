@@ -9,6 +9,9 @@ tags:
     - GPT4
     - model aichitecture
     - foundation model
+    - Model Architecture
+    - Pretraining Objective
+    - Zero-Shot Generalization
 ---
 
 # LLM 引领下一代AI范式变革
@@ -37,6 +40,19 @@ tags:
 - ChatGPT复现的路径
     - 那篇历史发展以及讨论在继续学习一下
 
+## 论文速读：哪种模型架构和预训练目标最适合零样本泛化？
+
+* 动机
+目前的大规模预训练语言模型已经具有一定的零样本泛化能力（即不需要显式地进行训练）就可以完成一定的任务。比如GPT3，T0，FLAN等等，然而不同的模型架构（Causal Decoder, Non-Causal Decoder和Encoder-Decoder）和不同的预训练目标对这些模型有着十分重大的影响。然而这些因素很少被系统的探究过，本文作者致力于系统地探究以上因素对预训练模型在零样本泛化上的性能的影响。
+* 方案
+![](/img/in-post/post-ai/model/model_architech.png)
+如上图所示，作者探究了三种模型架构（Causal Decoder, Non-Causal Decoder和Encoder-Decoder），三种预训练目标 Language Modeling (GPT系列)，Prefix LM (UniLM等)和 MLM（BERT系列），两种适配方案（对Causal Decoder使用MLM进行适配，做法上就是把attention变成Non-Causal的，对Non-Causal Decoder做LM的适配），两种微调选择（不进行任何微调和在下游任务上进行多任务微调）最后在两个基准上进行评估。
+* 结论
+
+通过系统而公平的比较作者得到了如下结论/发现：
+基于Causal Decoder这种模型架构，使用full language modeling这种预训练目标经过大规模无监督预训练之后可以达到很好的零样本泛化性能。（换句话说，就是类似GPT系列的工作，纯decoder的模型，经过大规模自监督预训练就可以达到很好的零样本性能）
+基于Encoder-Decoder这种模型架构，使用MLM这种预训练目标，通过下游的多任务微调之后可以达到很好的零样本泛化性能。（T0可以佐证这一点）
+模型可以从一种架构/预训练目标适配到另外一种吗？作者发现只有单独Decoder架构的模型可以做到，另外作者推荐使用Causal Decoder使用full language modeling预训练然后用non-causal MLM预训练目标进行适配，然后再去进行下游任务的多任务微调，可以取得不错的效果。
 
 
 ## 参考文件
@@ -54,4 +70,5 @@ tags:
     (https://arxiv.org/abs/2212.10559)
 6. > [UL2: Unifying Language Learning Paradigms]
     (https://arxiv.org/pdf/2205.05131.pdf)
-
+7. > [What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization?]
+    (https://arxiv.org/abs/2204.05832)
