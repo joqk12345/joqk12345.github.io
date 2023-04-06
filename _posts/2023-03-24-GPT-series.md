@@ -71,6 +71,8 @@ let's thinkit step by step
    (https://arxiv.org/pdf/2203.02155.pdf/) 
 5.  > [ COT ]
    (https://arxiv.org/pdf/2201.11903.pdf/) 
+6. > [ ChatGPT技术原理解析：从RL之PPO算法、RLHF到GPT4/InstructGPT ]
+   (https://blog.csdn.net/v_JULY_v/article/details/128579457)
 
 
 
