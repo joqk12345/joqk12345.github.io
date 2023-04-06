@@ -12,6 +12,7 @@ tags:
     - Model Architecture
     - Pretraining Objective
     - Zero-Shot Generalization
+    - Pretraing model 
 ---
 
 # LLM 引领下一代AI范式变革
@@ -40,8 +41,8 @@ tags:
 - ChatGPT复现的路径
     - 那篇历史发展以及讨论在继续学习一下
 
-## 论文速读：哪种模型架构和预训练目标最适合零样本泛化？
-
+## 哪种模型架构和预训练目标最适合零样本泛化？
+对应附录7
 * 动机
 目前的大规模预训练语言模型已经具有一定的零样本泛化能力（即不需要显式地进行训练）就可以完成一定的任务。比如GPT3，T0，FLAN等等，然而不同的模型架构（Causal Decoder, Non-Causal Decoder和Encoder-Decoder）和不同的预训练目标对这些模型有着十分重大的影响。然而这些因素很少被系统的探究过，本文作者致力于系统地探究以上因素对预训练模型在零样本泛化上的性能的影响。
 * 方案
@@ -54,6 +55,7 @@ tags:
 基于Encoder-Decoder这种模型架构，使用MLM这种预训练目标，通过下游的多任务微调之后可以达到很好的零样本泛化性能。（T0可以佐证这一点）
 模型可以从一种架构/预训练目标适配到另外一种吗？作者发现只有单独Decoder架构的模型可以做到，另外作者推荐使用Causal Decoder使用full language modeling预训练然后用non-causal MLM预训练目标进行适配，然后再去进行下游任务的多任务微调，可以取得不错的效果。
 
+## 预训练模型的进展
 
 ## 参考文件
 
@@ -72,3 +74,5 @@ tags:
     (https://arxiv.org/pdf/2205.05131.pdf)
 7. > [What Language Model Architecture and Pretraining Objective Work Best for Zero-Shot Generalization?]
     (https://arxiv.org/abs/2204.05832)
+8. > [近两年预训练模型的进展]
+    (https://zhuanlan.zhihu.com/p/254821426)
