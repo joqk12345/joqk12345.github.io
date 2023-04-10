@@ -11,7 +11,7 @@ tags:
     - GPU
 ---
 
-# LLM 大模型部署的挑战
+# AI Chip
 
 
 ## 通用处理器 CPU
