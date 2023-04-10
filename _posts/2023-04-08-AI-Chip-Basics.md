@@ -97,9 +97,23 @@ CPU 于上世纪 60 年代问世，已发展几十年，有几十种不同的指
 * 可以把 CPU 简单地分为控制平面和计算平面两部分 ，CPU 作为指令流驱动计算的处理引擎。
 ![](/img/in-post/post-ai/hardware/cpu_abstract.png)
 
+### 延时
+
+" CUDA的架构师Stephen Jones发表了关于GPU计算以及它如何受到硬件和物理定律限制的演讲。他认为，人们在购买机器时不应该关心flops，而应该关注数据。他声称，理解这些原则对于让机器做想要的事情至关重要。
+
+1. 从本质上讲，现代处理器的计算强度是由处理器的内存带宽和它每秒可计算的千兆运算数量之间的比例决定的。为了达到良好的性能，算法必须有很高的计算强度--也就是说，它们必须对它们收到的每一个数据做大量的工作。唯一符合这一标准的算法是矩阵乘法，它是唯一一种每负载需要80次运算的算法。虽然翻转率很重要，但大多数算法都无法跟上处理器的需求，更多的翻转数可能不等于性能的提高。
+
+2. 计算的翻转率越来越高，这使得程序员需要使用算法来保持现代芯片的忙碌。内存带宽有限的程序比flop密集型程序更常见，延迟是编程时需要考虑的一个重要因素，因为加载数据所需的时间需要与flop功率相平衡。
+
+3. 加载y并不取决于x，因为有一种叫做流水线的技术，额外的内存操作被有用的工作所隐藏。流水线是大多数程序优化的核心，因为由于物理学的限制，内存的延迟与计算机的延迟相比是巨大的。"
+
+
 
 
 ## 参考文件
 
 1. >[ Processor_Architecture_Design_Practices_Survey ]
    (https://www.researchgate.net/publication/50281783_Processor_Architecture_Design_Practices_Survey_Issues/fulltext/57a7b60108ae3f45293919aa/Processor-Architecture-Design-Practices-Survey-Issues.pdf) 
+
+2. > [ How GPU Computing Works ]
+   (https://www.youtube.com/watch?v=3l10o0DYJXg)
