@@ -48,7 +48,7 @@ tags:
 * EnergonAI
   
   1. 采用了一个层次控制的系统架构来协调多个 设备并有效地支持不同的并行模式. 
-  2. 讲子模型的执行委托给单个controller风格的多个worker，在多个controller的worker中应用张量并行和流水线并行。
+  2. 将子模型的执行委托给单个controller风格的多个worker，在多个controller的worker中应用张量并行和流水线并行。
   3. 使用了非阻塞并行、分布式冗余计算消除、对等内存池。
 
   * prons
