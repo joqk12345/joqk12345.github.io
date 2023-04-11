@@ -155,4 +155,5 @@ Accelerate/Deepspeed-Inference/Deepspeed-ZeRO.
 3. > [bloom](https://huggingface.co/bigscience/bloom)
 4. > [ Incredibly Fast BLOOM Inference with DeepSpeed and Accelerate ](https://huggingface.co/blog/bloom-inference-pytorch-scripts)
 5. > [  How to generate text: using different decoding methods for language generation with Transformers ](https://huggingface.co/blog/how-to-generate)
+6.  > [ parallelism ](https://huggingface.co/transformers/v4.11.3/parallelism.html)
 
