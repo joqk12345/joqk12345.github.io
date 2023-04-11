@@ -129,7 +129,9 @@ HF Accelerate/Deepspeed-Inference/Deepspeed-ZeRO.
    1. 吞吐量(throughput)的提升使用的Tensor Parallelism (TP)而不是Accelerate使用的Pipeline Parallelism (PP)。因为Accelerate就是非常传统的做法不能最大化GPU的使用率。所有的计算是基于GPU串行执行，例如首先是 GPU 0, 然后是在GPU 1等等. 指到执行到GPU 8,意味着每次执行有7个GPU是处于等待状态。另一方面，DeepSpeed-Inference使用TP，这意味着它将向所有GPU发送张量，在每个GPU上计算部分生成，然后所有GPU相互沟通结果，然后进入下一层。这意味着所有的GPU都是同时活动的，但它们需要的沟通要多得多。
    2. DeepSpeed-Inference还使用了定制的CUDA内核，以避免分配过多的内存和在GPU之间进行张量复制。这样做的效果是减少了内存需求和内核启动次数，从而提高了吞吐量，并允许更大的批处理量，从而提高整体吞吐量。
 
-5. 但是看Benchmarks测试，accelerate会好于ds-inference，感觉很奇怪？？
+5. 问题
+   1. 但是看Benchmarks测试，accelerate会好于ds-inference，感觉很奇怪？？
+   2. 是否只支持bloom，不支持其他模型的推理？
 
 6. Energon-AI
    
