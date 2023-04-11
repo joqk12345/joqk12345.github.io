@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "Parallelism Training introduction "
+title:        "Parallelism Training Introduction "
 author:       "galaxies"
 header-style:  text
 catalog:      true
