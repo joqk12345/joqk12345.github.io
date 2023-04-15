@@ -36,13 +36,65 @@ GPU的算力在很大程度上决定了其在图形渲染、科学计算、深�
 
 总体而言，GPU的体系结构旨在提供高效的并行计算能力，以加速各种计算密集型应用程序的运行。
 
-## gpu的sm是指什么
+## GPU 线程结构
+
+![](/img/in-post/post-ai/hardware/gpu/gpu-thread-1.png)
+
+* GPU 并行才是本质
+* CPU 并发是本质
+
+![](/img/in-post/post-ai/hardware/gpu/gpu-cpu-1.png)
+
+## gpu的基本概念
+
+### CUDA
+CUDA（Compute Unified Device Architecture）
+1. 2006 年 11 月，NVIDIA 推出了 CUDA，通用并行计算平台和编程模型，用于图形处理单元（GPU）上的通用计算。利用 NVIDIA GPU 中的并行计算引擎（CUDA Core）以比在 CPU 上更有效的方式解决许多复杂的计算问题。
+![](/img/in-post/post-ai/hardware/gpu/cuda-architecture.png)
+2. CUDA 并行编程模型作为一款通用接口，为熟悉 C 等标准编程语言的程序员保持较低的学习曲线。
+![](/img/in-post/post-ai/hardware/gpu/cuda-programing-architecture.png)
+3. CUDA 将 GPU 架构建模为多核系统，将 GPU 并行线程抽象为层次化线程结构（网格状的线程块）。
+4. 这样可以指导开发者将问题划分为独立线程块并行解决的子问题，并进一步将每个子问题划分为可以由块内的线程并行协作解决的部分。
+![](/img/in-post/post-ai/hardware/gpu/cuda-programing-architecture-2.png)
+5. 通过允许线程 Thread 在解决每个子问题时，进行协作来保持语言表达能力，同时实现自动可扩展性。实际上，每个线程块 Thread Block 都可以在 GPU 的计算单元内以任何顺序进行调度，以便编译后的 CUDA 程序可以在任意数量的多处理器上执行。
+
+
+### SP，流处理器 (Stream Processor)
+* SP 被称作流处理器，在G80时英文也曾称（Scalar Processors）、（Scalar Streaming Processors）。这种称呼主要因为之前 SP 单元是被当作标量处理单元。Fermi 架构后，SP被改称为CUDA Core。所以对于现在的N卡架构来说，流处理器数量即CUDA Core数量。
+
+
+### sm是指什么
+
+1. SM 从 G80 提出的概念，中文称流多处理器，包含算术单元以及块和线程专用的其他资源（例如每个块共享内存和寄存器文件），组成了一套完整的线程运行系统。主要包括：
+   1. CUDA Core：向量运行单元 （FP32-FPU、FP64-DPU、INT32-ALU）；
+   2. Tensor Core：张量运算单元（FP16、BF16、INT8、INT4）；
+   3. Special Function Units：特殊函数单元 SFU（超越函数和数学函数，e.g. 反平方根、正余弦等）；
+   4. Multi level Cache：多级缓存（L0/L1 Instruction Cache、L1 Data Cache & Shared Memory）；
+   5. Load/Store：访问存储单元LD/ST（负责数据处理）；
+   6. Warp Scheduler：线程束调度器；
+   7. Dispatch Unit：分配单元；
+   8. Register File：寄存器堆；
 
 在GPU中，SM（Streaming Multiprocessor）是一种物理硬件单元，它包含了一组CUDA核心、寄存器文件、共享内存和其他硬件资源，可以独立地执行指令。
-
 SM是GPU的核心组成部分，也是GPU进行并行计算的基本单元。每个SM可以独立执行指令，包括算术运算、逻辑运算、数据移动、共享内存等，从而实现对大规模数据的高效并行处理。
-
 不同的GPU型号和架构中，SM的具体实现和性能可能会有所不同。例如，NVIDIA的Turing架构中，每个SM中包含64个CUDA核心、4个Tensor核心和其他硬件资源，可以同时执行多个线程块。SM的数量和性能也会影响GPU的总体性能。
+
+### Warp
+1. Warp 也称线程束。逻辑上，所有Thread是并行，但是，从硬件的角度来说，并不是所有的 Thread能够在同一时刻执行，这里就需要Warp的引入。
+2. Warp 是 SM 基本执行单元，一个 Warp 包含32个并行 Thread（warp_size = 32），这32个 Thread 执行于 SIMT（Single-Instruction Multiple-Thread）模式。也就是说所有 Thread 以锁步的方式执行同一条指令，但每个 Thread 会使用各自的 Data 执行指令分支。如果在 Warp 中没有32个 Thread 需要工作，那么 Warp 虽然还是作为一个整体运行，但这部分 Thread 是处于非激活状态的。
+3. Thread是最小的逻辑单位，Warp是最小的硬件执行单位。
+
+### CUDA Core
+1. CUDA Core 在 Fermi 架构里提出，是最小的运算执行单元。
+2. 在 Fermi 架构中，一个 SM 中包含了有 2 组各 16 个 CUDA Core，
+3. 每个 CUDA Core 包含了一个整数运算单元 ALU (Integer Arithmetic Logic Unit) 和一个浮点运算单元 FPU (Floating Point Unit) 。
+![](/img/in-post/post-ai/hardware/gpu/fermi_Streaming_Multiprocessor.png)
+
+4. 到了 Volta 架构，CUDA Core 又和 Fermi架构时期发生了变化。从这里开始就没有以前的 CUDA Core 了，而是变成了单独的 FP32  FPU 和 INT32 ALU。
+5. 因为 FP32:INT32 是 1:1，所以还是很方便把它们合并成原来的 CUDA Core 去称呼。这样做的好处是每个 SM 现在支持 FP32 和 INT32 的并发执行。
+
+![](/img/in-post/post-ai/hardware/gpu/volta-streaming-multiprocessor.png)
+
 
 ## GPU的显存与sm的关系是什么
 
@@ -67,6 +119,10 @@ Tensor Core是英伟达（NVIDIA）GPU中的一种特殊处理器单元，用于
 Tensor Core在实现深度学习中的矩阵计算时可以极大地提高计算速度，使得深度学习训练和推理的速度大大加快。具体来说，Tensor Core支持半精度浮点数（FP16）和混合精度浮点数（FP16+FP32）的矩阵运算，可以在一次操作中同时计算四个FP16或者两个FP16+FP32数据元素。
 
 Tensor Core一般用于英伟达的深度学习加速库CUDA（Compute Unified Device Architecture）中，如cuDNN（CUDA Deep Neural Network library）等。Tensor Core的出现大大加速了深度学习模型的训练和推理速度，成为了当今深度学习加速的重要技术之一。
+
+## GPU 显存速度
+
+![](/img/in-post/post-ai/hardware/gpu/gpu-cache.png)
 
 
 ## 参考文件
