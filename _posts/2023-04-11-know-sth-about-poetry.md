@@ -63,12 +63,26 @@ Package operations: 2 installs, 0 updates, 0 removals
   • Installing pysrt (1.1.2)
 ```
 
+4. 执行测试脚本
+
+```
+ poetry run pytest tests
+ ================ test session starts ==============
+platform darwin -- Python 3.9.7, pytest-7.3.0, pluggy-1.0.0
+rootdir: /Users/kai.qiao/workspace/Py_Workspace/content-generators
+collected 1 item                                                                                                                                    
+tests/unit_tests/data_loader/test_youtube_dataloader.py .                                                                                                                                                                        [100%]
+
+================= 1 passed in 0.02s ===================
+
+```
 
 
 
-## langchain 的主要模块
 
-## 使用langchain 生成内容摘要
+## 
+
+## 
 
 
 
@@ -79,3 +93,4 @@ Package operations: 2 installs, 0 updates, 0 removals
 
 1.  > [ langchain-tutorials ]
    (https://python-poetry.org/docs/basic-usage/) 
+2. >[ poetry 常用命令 ](https://python-poetry.org/docs/cli/)
