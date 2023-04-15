@@ -68,7 +68,7 @@ Tensor Core在实现深度学习中的矩阵计算时可以极大地提高计算
 
 Tensor Core一般用于英伟达的深度学习加速库CUDA（Compute Unified Device Architecture）中，如cuDNN（CUDA Deep Neural Network library）等。Tensor Core的出现大大加速了深度学习模型的训练和推理速度，成为了当今深度学习加速的重要技术之一。
 
-
+test
 ## 参考文件
 1. > [Nvidia Cuda 编程]
    (https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html#/) 
