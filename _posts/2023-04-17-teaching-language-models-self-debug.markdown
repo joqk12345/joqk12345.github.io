@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "REACT"
+title:      "Teaching Large Language Models to Self-Debug"
 subtitle:   " Teaching Large Language Models to Self-Debug"
 date:       2023-04-17 22:24:00
 author:     "Galaxies"
