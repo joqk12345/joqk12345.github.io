@@ -1,6 +1,6 @@
 ---
 layout:       post
-title:        "GPU Virtualisation of  basic GPU concept"
+title:        "GPU  of  basic GPU concept"
 author:       "galaxies"
 header-style:  text
 catalog:      true
@@ -43,7 +43,20 @@ GPU的算力在很大程度上决定了其在图形渲染、科学计算、深�
 * GPU 并行才是本质
 * CPU 并发是本质
 
+### 计算模式与线程的关系
+在AI计算中，不是所有的计算都可以是线程独立的
 ![](/img/in-post/post-ai/hardware/gpu/gpu-cpu-1.png)
+![](/img/in-post/post-ai/hardware/gpu/compute_with_thread.png)
+* 线程分层执行
+  1.  用网格Grid进行覆盖，表示所有要执行的任务
+  2.  Grid中分块block，网格中包含很多相同线程Threads数量块Block；
+  3.  Block 中的线程 Threads 通过本地数据共享来计算
+      1.  block中的线程数独立执行，可以通过本地数据共享同步交换数据；
+  ![](/img/in-post/post-ai/hardware/gpu/thread-hierarchy-execute.png)
+* 并行提升整体计算强度
+
+* 为什么GPU适用于AI计算
+  * 通过超配的线程Threads来掩盖时延，多级的缓存平衡计算和带宽的GAP，提出Tensor Core来增加峰值算力
 
 ## gpu的基本概念
 
