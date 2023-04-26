@@ -133,5 +133,3 @@ tags:
 —— Galaxies
 
 ## 参考文献
-1. >[Emergent Abilities of Large Language Models](https://arxiv.org/pdf/2206.07682.pdf)
-2. >[https://zhuanlan.zhihu.com/p/621438653](https://zhuanlan.zhihu.com/p/621438653)
