@@ -18,13 +18,27 @@ tags:
 2. ColossalAI
 3. nebullvm
 4. RaLM-rlhf-pytorch
-5. 
+5. DeepSpeed-Chat
 
 ## ChatGPT 完整训练包括三个流程
 Supervised FineTune（SFT）：使用人工编写的期望模型如何输出的数据集，对GPT-3进行微调
 Reward Model（RM）：使用人工标注的排序数据，训练奖励模型，预测人类更喜欢哪个输出
 强化学习微调 SFT：使用奖励模型作为强化学习优化目标，微调SFT模型
 
+## 关于LLM fine-tune技术
+![](/img/in-post/post-ai/training/fine-tuning/llm-fine-tuning.png)
+
+1. fine-tuning技术
+   经典的fine-tuning方法包括将预训练模型与少量特定任务数据一起继续训练。在这个过程中，预训练模型的权重被更新，以更好地适应任务。所需的fine-tuning量取决于预训练语料库和任务特定语料库之间的相似性。如果两者相似，可能只需要少量的fine-tuning。如果两者不相似，则可能需要更多的fine-tuning。
+   在NLP中，fine-tuning最著名的例子之一是由OpenAI开发的OpenAI GPT（生成式预训练变压器）模型。GPT模型在大量文本上进行了预训练，然后在各种任务上进行了微调，例如语言建模，问答和摘要。经过微调的模型在这些任务上取得了最先进的性能。
+2. parameter-efficient fine-tuning技术
+   通过仅训练一小组参数来解决传统微调技术需要大量资源的问题，这些参数可能是现有模型参数的子集或新添加的一组参数。
+   1. fine-tuning技术称为蒸馏(distillation)：预训练模型生成“教师”预测结果，然后用于训练较小的“学生”模型。通过这样做，学生模型可以从较大模型的知识中学习，而无需存储所有参数。
+   2. adapter training：适配器是添加到预训练模型中的小型神经网络，用于特定任务的微调。这些适配器只占原始模型大小的一小部分，这使得训练更快，内存需求更低。适配器可以针对多种任务进行训练，然后插入到预训练模型中以执行新任务。
+3. prompt-tuning技术
+   prompt-tuning和传统的fine-tuning的主要区别在于预训练模型被修改的程度。fine-tuning修改模型的权重，而提示调整只修改模型的输入。因此，prompt-tuning调整比精调的计算成本低，需要的资源和训练时间也更少。此外，prompt-tuning比精调更灵活，因为它允许创建特定任务的提示，可以适应各种任务。
+   经典的prompt-tuning方式不涉及对底层模型的任何参数更新。相反，它侧重于精心制作可以指导预训练模型生成所需输出的输入提示或模板。这通常是一个手动的试错过程，从中选择最适合特定任务的提示。然而，随着前缀调整和P-Tuning等提示调整技术的出现，它们提供了更系统化和高效的方式来适应输入提示，从而提高大型预训练模型在特定任务上的性能。
+   
 
 ## 关于训练框架训练模型的选择
 
@@ -113,12 +127,30 @@ LLaMA: Open and Efficient Foundation Language Models
    1.  Mesh TensorFlow (mtf)是一种专用于分布式深度学习的语言，可指定多种分布式张量计算。其名称中的Mesh意为“网”，表示多个处理器和计算设备互相连接形成的网络。
    2.  [mesh](https://github.com/tensorflow/mesh) 
 
+10. DeepSpeed-Chat
+    1.  出现的背景是： ChatGPT及类似模型引发了人工智能（AI）领域的一场风潮，ChatGPT类模型具有惊人的泛用性，能够执行归纳、编程、翻译等任务，其结果与人类专家相当甚至更优。在开源领域出现各种方案尝试去复现ChatGPT，比如（例如 ChatLLaMa、Alpaca、Vicuna、Databricks-Dolly等），尽管开源社区付出了巨大的努力，前仍缺乏一个支持端到端的基于人工反馈机制的强化学习（RLHF）的规模化系统，在现有的方案在规模、效率上都显得十分不足，成本巨大。
+    2. DeepSpeed-Chat 特点
+       1.  DeepSpeed-RLHF Pipeline 有自己的强化学习pipeline：简化 ChatGPT 类型模型的训练和强化推理体验，只需一个脚本即可实现多个训练步骤，包括使用 Huggingface 预训练的模型、使用 DeepSpeed-RLHF 系统运行 InstructGPT 训练的所有三个步 骤、甚至生成你自己的类ChatGPT模型。此外，我们还提供了一个易于使用的推理API，用于用户在模型训练后测试对话式交互。
+       2.  DeepSpeed-RLHF 模块：DeepSpeed-RLHF 复刻了 InstructGPT 论文中的训练模式，并确保包括a) 监督微调（SFT），b) 奖励模型微调和 c) 基于人类反馈的强化学习（RLHF）在内的三个步骤与其一一对应。此外，我们还提供了数据抽象和混合功能，以支持用户使用多个不同来源的数据源进行训练。
+       3.  DeepSpeed-RLHF System: 一将 DeepSpeed 的训练（training engine）和推理能力（inference engine) 整合到一个统一的混合引擎（DeepSpeed Hybrid Engine or DeepSpeed-HE）中用于 RLHF 训练。DeepSpeed-HE 能够在 RLHF 中无缝地在推理和训练模式之间切换，使其能够利用来自 DeepSpeed-Inference 的各种优化，如张量并行计算和高性能CUDA算子进行语言生成，同时对训练部分还能从 ZeRO- 和 LoRA-based 内存优化策略中受益。DeepSpeed-HE 还能够自动在 RLHF 的不同阶段进行智能的内存管理和数据缓存。
+    3. Efficiency and Affordability: DeepSpeed Hybrid Engine 比现有系统（OPT模型有15x提升）；
+
+
 
 ## 参考文件
 
 1.  > [ GPT-3 + RL 全流程训练开源整理]
    (https://zhuanlan.zhihu.com/p/608705255) 
 2. > [训练大模型的九大深度学习库](https://blog.csdn.net/OneFlow_Official/article/details/127385341)
+3. >[DeepSpeed Chat](https://github.com/microsoft/DeepSpeed/tree/master/blogs/deepspeed-chat)
+4. >[DeepSpeed Chat-zh](https://github.com/microsoft/DeepSpeed/tree/master/blogs/deepspeed-chat/chinese#)
+5. >[大模型微调技术](https://mp.weixin.qq.com/s/Ad-8OVCKxuVLH0e9__PHMA)
+6. >[高效精调的论文综述](https://arxiv.org/abs/2303.15647)
+7. >[P-Tuning和Prompt相关《GPT Understands, Too》](https://www.zhihu.com/tardis/zm/art/581378268?source_id=1003)
+
+
+
+
 
 
    
