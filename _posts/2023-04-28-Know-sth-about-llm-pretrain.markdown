@@ -23,10 +23,13 @@ tags:
 
 
 
-## 结论
+## LLAMA
+
+
 
 
 
 —— Galaxies
 
 ## 参考文献
+1. >[ llama:开放和高效的基础语言模型 ](https://zhuanlan.zhihu.com/p/609843048) 
