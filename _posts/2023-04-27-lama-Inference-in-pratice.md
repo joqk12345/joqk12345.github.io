@@ -12,7 +12,8 @@ tags:
     - torchrun
 ---
 
-> Meta 开源了 LLaMA（Large Language Model Meta AI） 预训练模型，衍生出了一系列二次开发场景，都基于 LLaMA finetune，他的子孙包括Alpaca、Vicuna、Koala、Baize、Luotuo
+> Meta 开源了 LLaMA（Large Language Model Meta AI） 预训练模型，衍生出了一系列二次开发场景，都基于 LLaMA finetune，他的子孙包括Alpaca、Vicuna、Koala、Baize、Luotuo,
+> 基于LLaMA开发的LLM有Alpaca、Guanaco、LuoTuo、Vicuna、Koala等，但都无法商业化。Databricks刚发布了个120亿参数的开源模型Dolly 2.0，可以商业化https://huggingface.co/databricks/dolly-v2-12b
 > “Yeah It's on. ”
 >  
 >  

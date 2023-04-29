@@ -20,6 +20,7 @@ tags:
 4. RaLM-rlhf-pytorch
 5. DeepSpeed-Chat
 6. lamini
+7. Alpaca-LoRA:
 
 ## ChatGPT 完整训练包括三个流程
 Supervised FineTune（SFT）：使用人工编写的期望模型如何输出的数据集，对GPT-3进行微调
@@ -152,6 +153,8 @@ LLaMA: Open and Efficient Foundation Language Models
 6. >[高效精调的论文综述](https://arxiv.org/abs/2303.15647)
 7. >[P-Tuning和Prompt相关《GPT Understands, Too》](https://www.zhihu.com/tardis/zm/art/581378268?source_id=1003)
 8. >[lamini](https://lamini.ai/blog/introducing-lamini)
+9. >[Alpaca-LoRA](https://mp.weixin.qq.com/s/cTodp4lVeW6YP9NxoKhCcA)
+10. >[LoRA: Low-Rank Adaptation of Large Language Models](https://finisky.github.io/lora/)
 
 
 
