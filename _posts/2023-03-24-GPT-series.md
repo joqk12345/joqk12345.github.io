@@ -32,7 +32,7 @@ GPT3: multi-task learners
 * 模型训练步骤
 ![](/img/in-post/post-ai/model/Instruct-architecture.png)
 1. 三步骤
-   1. :  supervised fine-tuning (SFT), 
+   1. supervised fine-tuning (SFT), 
    2. reward model (RM) training
    3. reinforcement learning via proximal policy optimization (PPO) on this reward model.
 
