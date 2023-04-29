@@ -175,4 +175,3 @@ wasm文件可以通过HTTP协议从Web服务器下载到客户端浏览器中，
 3. >[ggml](https://github.com/ggerganov/ggml)
 4. >[FAQ](https://github.com/ggerganov/whisper.cpp/discussions/126)
 5. >[ggml-document](https://github.com/ggerganov/whisper.cpp/issues/40)
-6. >[tensor_parallel](https://github.com/BlackSamorez/tensor_parallel)
