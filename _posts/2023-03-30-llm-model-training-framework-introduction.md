@@ -18,7 +18,7 @@ tags:
 2. ColossalAI
 3. nebullvm
 4. RaLM-rlhf-pytorch
-5. 
+5. DeepSpeed-Chat
 
 ## ChatGPT 完整训练包括三个流程
 Supervised FineTune（SFT）：使用人工编写的期望模型如何输出的数据集，对GPT-3进行微调
@@ -113,12 +113,20 @@ LLaMA: Open and Efficient Foundation Language Models
    1.  Mesh TensorFlow (mtf)是一种专用于分布式深度学习的语言，可指定多种分布式张量计算。其名称中的Mesh意为“网”，表示多个处理器和计算设备互相连接形成的网络。
    2.  [mesh](https://github.com/tensorflow/mesh) 
 
+10. DeepSpeed-Chat
+    1.  Easy, Fast and Affordable RLHF Training of ChatGPT-like Models at All Scales
+    2.  DeepSpeed-RLHF Pipeline 有自己的强化学习pipeline
+    3.  DeepSpeed-RLHF System: 一个强大而复杂的RLHF系统，它将DeepSpeed的训练和推理能力结合到单一的用于RLHF的混合引擎（DeepSpeed-HE）中。
+    4. Efficiency and Affordability:比 OPT模型有13x提升；
+
+
 
 ## 参考文件
 
 1.  > [ GPT-3 + RL 全流程训练开源整理]
    (https://zhuanlan.zhihu.com/p/608705255) 
 2. > [训练大模型的九大深度学习库](https://blog.csdn.net/OneFlow_Official/article/details/127385341)
+3. >[DeepSpeed Chat](https://github.com/microsoft/DeepSpeed/tree/master/blogs/deepspeed-chat)
 
 
    
