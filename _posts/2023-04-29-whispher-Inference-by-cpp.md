@@ -176,3 +176,4 @@ wasm文件可以通过HTTP协议从Web服务器下载到客户端浏览器中，
 4. >[FAQ](https://github.com/ggerganov/whisper.cpp/discussions/126)
 5. >[ggml-document](https://github.com/ggerganov/whisper.cpp/issues/40)
 6. >[whisper cpp](https://github.com/ggerganov/whisper.cpp)
+7. >[model deploy& inference](https://github.com/ymcui/Chinese-LLaMA-Alpaca/wiki/%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E4%B8%8E%E9%83%A8%E7%BD%B2)
