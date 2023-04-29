@@ -114,10 +114,12 @@ LLaMA: Open and Efficient Foundation Language Models
    2.  [mesh](https://github.com/tensorflow/mesh) 
 
 10. DeepSpeed-Chat
-    1.  Easy, Fast and Affordable RLHF Training of ChatGPT-like Models at All Scales
-    2.  DeepSpeed-RLHF Pipeline 有自己的强化学习pipeline
-    3.  DeepSpeed-RLHF System: 一个强大而复杂的RLHF系统，它将DeepSpeed的训练和推理能力结合到单一的用于RLHF的混合引擎（DeepSpeed-HE）中。
-    4. Efficiency and Affordability:比 OPT模型有13x提升；
+    1.  出现的背景是： ChatGPT及类似模型引发了人工智能（AI）领域的一场风潮，ChatGPT类模型具有惊人的泛用性，能够执行归纳、编程、翻译等任务，其结果与人类专家相当甚至更优。在开源领域出现各种方案尝试去复现ChatGPT，比如（例如 ChatLLaMa、Alpaca、Vicuna、Databricks-Dolly等），尽管开源社区付出了巨大的努力，前仍缺乏一个支持端到端的基于人工反馈机制的强化学习（RLHF）的规模化系统，在现有的方案在规模、效率上都显得十分不足，成本巨大。
+    2. DeepSpeed-Chat 特点
+       1.  DeepSpeed-RLHF Pipeline 有自己的强化学习pipeline：简化 ChatGPT 类型模型的训练和强化推理体验，只需一个脚本即可实现多个训练步骤，包括使用 Huggingface 预训练的模型、使用 DeepSpeed-RLHF 系统运行 InstructGPT 训练的所有三个步 骤、甚至生成你自己的类ChatGPT模型。此外，我们还提供了一个易于使用的推理API，用于用户在模型训练后测试对话式交互。
+       2.  DeepSpeed-RLHF 模块：DeepSpeed-RLHF 复刻了 InstructGPT 论文中的训练模式，并确保包括a) 监督微调（SFT），b) 奖励模型微调和 c) 基于人类反馈的强化学习（RLHF）在内的三个步骤与其一一对应。此外，我们还提供了数据抽象和混合功能，以支持用户使用多个不同来源的数据源进行训练。
+       3.  DeepSpeed-RLHF System: 一将 DeepSpeed 的训练（training engine）和推理能力（inference engine) 整合到一个统一的混合引擎（DeepSpeed Hybrid Engine or DeepSpeed-HE）中用于 RLHF 训练。DeepSpeed-HE 能够在 RLHF 中无缝地在推理和训练模式之间切换，使其能够利用来自 DeepSpeed-Inference 的各种优化，如张量并行计算和高性能CUDA算子进行语言生成，同时对训练部分还能从 ZeRO- 和 LoRA-based 内存优化策略中受益。DeepSpeed-HE 还能够自动在 RLHF 的不同阶段进行智能的内存管理和数据缓存。
+    3. Efficiency and Affordability: DeepSpeed Hybrid Engine 比现有系统（OPT模型有15x提升）；
 
 
 
@@ -127,6 +129,8 @@ LLaMA: Open and Efficient Foundation Language Models
    (https://zhuanlan.zhihu.com/p/608705255) 
 2. > [训练大模型的九大深度学习库](https://blog.csdn.net/OneFlow_Official/article/details/127385341)
 3. >[DeepSpeed Chat](https://github.com/microsoft/DeepSpeed/tree/master/blogs/deepspeed-chat)
+4. >[DeepSpeed Chat-zh](https://github.com/microsoft/DeepSpeed/tree/master/blogs/deepspeed-chat/chinese#)
+
 
 
    
