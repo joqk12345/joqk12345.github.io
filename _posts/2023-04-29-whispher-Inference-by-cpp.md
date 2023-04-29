@@ -160,7 +160,7 @@ wasm文件是一种非常紧凑的格式，可以快速加载和执行，这是�
 
 wasm文件可以通过HTTP协议从Web服务器下载到客户端浏览器中，也可以通过JavaScript代码动态生成。在浏览器中运行wasm文件需要使用wasm解释器或JIT编译器。许多现代浏览器，如Chrome、Firefox、Safari等，已经支持wasm格式，使得开发人员可以使用这种格式构建高性能的Web应用程序。
 
-## 性能偏
+## 性能篇
 1.  Decoding strategies：[Improve decoding](https://github.com/ggerganov/whisper.cpp/pull/291)
 2.  Memory usage reduction: 主要通过他的数据结构来支持[Memory usage reduction](https://github.com/ggerganov/whisper.cpp/issues/272)
 3.  Core ML support:支持apple M1 芯片
