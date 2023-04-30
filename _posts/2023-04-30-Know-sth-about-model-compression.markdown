@@ -2,7 +2,7 @@
 layout:     post
 title:      "Model Commpression"
 subtitle:   "关于模型压缩的介绍与讨论"
-date:       2023-04-26 22:24:00
+date:       2023-04-30 12:24:00
 author:     "Galaxies"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
