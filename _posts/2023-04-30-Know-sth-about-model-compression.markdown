@@ -78,14 +78,19 @@ tags:
               3.  计算量化好的分布与FP32分布的KL divergence，并选取使KL最小的threshold作为saturation的阈值
             3. 通俗地理解，算法收集激活 Act直方图，并生成一组具有不同阈值的8位表示法，选择具有最少kl 散度的表示;此时的 kl 散度在参考分布(FP32激活)和量化分布之间(即8位量化激活)之间。
         2. 应用：TensorRT 就是在这个阶段进行的量化
-    5. 量化推理部署
-       1. 用IN T8进行inference时，由于数据是实时的，因此数据需要在线量化，量化的流程如图所示。 数据量化涉及Quantize，Dequantize和Requantize等3种操作。
-       2. Quantize量化
-          1. 将float32数据量化为int8。
-       3. Dequantize反量化
-         1. INT8相乘、加之后的结果用INT32格式存储，如果下一Operation需要float32格式数据作为输入，则通过Dequantize反量化操作将IN T32数据反量化为float32。
-        4. Requantize重量化
-           1. INT8乘加之后的结果用INT32格式存储，如果下一层需要INT8格式数据作为输入，则通过Requantize重量化操作将IN T32数据重量化为IN T8。
+ 5. 量化推理部署
+    1. 用IN T8进行inference时，由于数据是实时的，因此数据需要在线量化，量化的流程如图所示。 数据量化涉及Quantize，Dequantize和Requantize等3种操作。
+    2. Quantize量化
+       1. 将float32数据量化为int8。
+    3. Dequantize反量化
+      1. INT8相乘、加之后的结果用INT32格式存储，如果下一Operation需要float32格式数据作为输入，则通过Dequantize反量化操作将IN T32数据反量化为float32。
+     4. Requantize重量化
+        1. INT8乘加之后的结果用INT32格式存储，如果下一层需要INT8格式数据作为输入，则通过Requantize重量化操作将IN T32数据重量化为IN T8。
+  6. GPTQ 量化
+     1. 最近在整大模型量化相关的事情发现了这个[GPTQ for LLaMa]（https://github.com/qwopqwop200/GPTQ-for-LLaMa）
+     2. GPTQ的核心原理来自于OBQ， 而OBQ的思路主要来自于OBS(Optimal Brain Surgeon)， 在OBS中，作者希望找到一种方法，假设我们要抹去一个权重记为 ,使得其对整体的误差增加最少，并且同时计算出一个补偿$\delta_q$应用于剩余的权重上，使得抹去的这个权重增加的误差被抵消。
+     3. 关于这个方法的细节后面有机会单独介绍一下，这个只是记录一下大模型在量化方面的工作进展；
+     4. 当前重点还是在llama的4bit量化方面；
      
 
 
@@ -190,4 +195,5 @@ Student Model 学生模型模仿 Teacher Model 教师模型，二者相互竞争
 ## 参考文献
 1. >[ 低比特量化](https://github.com/chenzomi12/DeepLearningSystem/blob/main/Inference/Slim/02.quant.pdf) 
 2. >[ 神经网络量化综述](https://zhuanlan.zhihu.com/p/453992336) 
-3. 
+3. >[ GPTQ量化 ](https://zhuanlan.zhihu.com/p/616969812 )
+4. >[ GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers ](https://arxiv.org/abs/2210.17323)
