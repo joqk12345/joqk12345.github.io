@@ -56,7 +56,7 @@ GPU使用率
 
 1. torchrun --nproc_per_node MP example.py --ckpt_dir $TARGET_FOLDER/model_size --tokenizer_path $TARGET_FOLDER/tokenizer.model
 
-2. 原生的pt模型推理较慢13b的模型单个query耗时在2s左右；需要考虑量化、蒸馏、增加batch大小
+2. 原生的pt模型推理较慢13b的模型单个query耗时在2min左右；需要考虑量化、蒸馏、增加batch大小
 
 ![](/img/in-post/post-ai/inference/llama-inference-13b.png)
 
