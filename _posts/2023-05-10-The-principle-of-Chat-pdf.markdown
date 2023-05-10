@@ -2,7 +2,7 @@
 layout:     post
 title:      "The principle of Chat pdf"
 subtitle:   "semantic similarity"
-date:       2023-05-04 22:11:00
+date:       2023-05-10 10:11:00
 author:     "Galaxies"
 header-img: "img/post-bg-2015.jpg"
 catalog: true
