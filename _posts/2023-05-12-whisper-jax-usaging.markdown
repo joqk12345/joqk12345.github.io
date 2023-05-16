@@ -59,7 +59,9 @@ text = pipeline("pie-ep62.mp3")
 1. 执行报WARNING - No GPU/TPU found, falling back to CPU.
    1. 需要安装jax_cuda+releases.html
    2. pip install -U jax[cuda11_cudnn82] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html
-2. 执行效果
+2. 执行
+   1.  CUDA_VISIBLE_DEVICES=1 python wispher_jax_test.py
+3. 执行效果
    1. ![](/img/in-post/post-ai-framework/jax/whisper-jax/inference.png)   
 ## 参考文献
 1. >[ A machine learning compiler ](https://github.com/openxla/xla) 
