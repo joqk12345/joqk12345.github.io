@@ -40,8 +40,43 @@ When evaluating which scenarios to onboard, we consider who will directly intera
 ## cognitive Service onboarding
 Sat, May 13, 12:00 AM,收到了MS 发来的onboarding 邮件
 
-TODO
+1. 创建openai 资源服务
+   1. 第一次创建需要很久，我创建了三次才成功；
+
+2. 模型部署
+   ![](/img/in-post/post-ai/asr/azure/service.png)    
+
+3. 使用playground
+    ![](/img/in-post/post-ai/asr/azure/playground.png)   
+
+4. 使用openai-pypthon-sdk测试
+    可以在playground上选择查看代码可以复制即可；
+5. 使用langchain、openai-sdk、Azure OpenAI Service
+    ![](/img/in-post/post-ai/asr/azure/langchain-azure.png)   
+    1. langchain、openai-python-sdk 版本需要升级
+6. 其他
+   1. 可以查看监控、配置告警等信息
+
+
+## FAQ
+1. 邮箱申请的原则？
+   1. 原则上用个人邮箱可以申请的，公司邮箱只是用来让MS审核使用；
+   2. 申请完毕后，onboarding的邮件是通过公司邮箱发送给个人的；
+
+2.  手机号用哪个？
+    1.  可以使用中国大陆的个人手机号。
+
+3. Azure Subscription ID 是用哪一个？
+   1. 用的是Free Trial即可，不需要自己重新创建；
+
+4. 公司信息填写？
+   1. 公司信息如实填写，容易通过；
+
+5. 审核多久通过？
+   1. 一般提交之后2个工作日可以通过，我是5月12日提交，5月13日中午12点收到onboarding邮件；
+
 
 
 ## 参考文献
 1. >[ Azure OpenAI Service 注册申请与配置心得 ](https://atlassc.net/2023/04/25/azure-openai-service) 
+2. >[ using-langchain-and-chatgpt-turbo-with-azure-openai-service ](https://clemenssiebler.com/posts/using-langchain-and-chatgpt-turbo-with-azure-openai-service/)
