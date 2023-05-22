@@ -140,3 +140,4 @@ THEY ARE NOT NOT FINE TUNING. That is just a marketing term.
 ## 参考文献
 1. >[ openai-cookbook ](https://github.com/openai/openai-cookbook) 
 2. >[ Vector databases & embeddings ](https://twitter.com/SullyOmarr/status/1655626066331938818) 
+3. >[ improving-document-retrieval-with-contextual-compression ](https://blog.langchain.dev/improving-document-retrieval-with-contextual-compression/)
