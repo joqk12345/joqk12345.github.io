@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "llama.cpp decoder 策略"
-subtitle:   "一种经过微调之后且加速的识别模型"
+title:      "llama.cpp decoder Strategy"
+subtitle:   "llm 解码策略初探"
 date:       2023-05-31 16:30:00
 author:     "Galaxies"
 header-img: "img/post-bg-2015.jpg"
