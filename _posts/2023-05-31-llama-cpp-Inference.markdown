@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "llama.cpp decoder Strategy"
+title:      "llama.cpp decoder strategy"
 subtitle:   "llm 解码策略初探"
 date:       2023-05-31 16:30:00
 author:     "Galaxies"
